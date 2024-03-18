@@ -12,6 +12,7 @@ function HeroAsks() {
           </div>
           <div className=" w-full md:col-span-4">
             <Questions />
+            
           </div>
         </section>
       </div>

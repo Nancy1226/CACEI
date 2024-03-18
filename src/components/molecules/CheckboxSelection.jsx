@@ -9,7 +9,7 @@ function CheckboxSelection() {
   };
 
   return (
-    <div className='md:flex md:flex-row space-y-4 gap-7 items-center flex-col md:flex-wrap'>
+    <div className='flex md:flex-row gap-7 flex-col'>
       <label className='flex gap-1 items-center'>
         <Check type='checkbox' value="1" checked={selectedOption === '1'} onChange={() => handleCheckboxChange('1')} />
         Poco
