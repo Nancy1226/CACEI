@@ -4,6 +4,9 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import RouteProtected from './containers/RouteProtected'
 import ReactDOM from 'react-dom/client'
+import './assets/styles/index.css'
+import AeMateria from './pages/AeMateria'
+import Cuestionario from './pages/Cuestionario'
 
 const router = createBrowserRouter([
   {
@@ -11,6 +14,12 @@ const router = createBrowserRouter([
   },{
     // path: '/', element:<RouteProtected />,
     path:'/dashboard',element:<Dashboard />
+  },
+  {
+    path: "/MT", element: <AeMateria/>
+  },
+  {
+    path: "/cuentionario", element: <Cuestionario/>
   }
 ]);
 

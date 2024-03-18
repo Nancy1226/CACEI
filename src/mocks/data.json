@@ -1,0 +1,52 @@
+{
+    "cacei":[
+        {
+            "id": "RT3080",
+            "title": "AE01",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        },
+        {
+            "id": "XM9141",
+            "title": "AE02",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        },
+        {
+            "id": "RG0314",
+            "title": "AE03",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        },
+        {
+            "id": "RT2080",
+            "title": "AE04",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        },
+        {
+            "id": "AA1449",
+            "title": "AE05",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        },
+        {
+            "id": "TG9232",
+            "title": "AE06",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        },
+        {
+            "id": "ML1223",
+            "title": "AE07",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis provident recusandae nisi dolor laborum, earum animi."
+        }
+    ],
+    "materias":[
+        {
+            "id": "ML1223",
+            "materia": "Arquitectura de software",
+            "profesores": "Alí Santiago López Zunún"
+        },
+        {
+            "id": "TG9232",
+            "materia": "Porgramación orientada a objecto",
+            "profesores": "Alí Santiago López Zunún"
+        }
+    ]
+    
+}

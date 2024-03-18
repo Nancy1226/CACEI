@@ -1,7 +1,7 @@
-function Paragraph() {
+function Paragraph({ text }) {
     return ( 
     <>
-    
+        <p className=" font-light">{text}</p>
     </> 
     );
 }
