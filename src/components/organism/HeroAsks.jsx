@@ -77,12 +77,20 @@ function HeroAsks({ id_grupo }) {
     };
   };
 
+  const cargando = {
+    nombre: "cargando",
+    matricula: "cargando"
+  }
+
   return (
     <>
       <div className="flex justify-center">
         <section className="grid grid-cols-1 md:grid-cols-5 md:space-x-10 pl-2 pr-2 md:pr-0 md:pl-0  py-7  max-w-6xl w-full ">
           <div className=" md:col-span-1 hidden md:flex">
-            <CardsAlum />
+            {currentAlumno ? (
+              <CardsAlum alumno={currentAlumno}/>
+            ): (<CardsAlum alumno={cargando}/>)}
+            
           </div>
           <div className="border border-red-500 col-span-4">
           <div className="flex justify-end">
@@ -109,6 +117,7 @@ function HeroAsks({ id_grupo }) {
                       timer: 1500,
                     });
                     console.table(values);
+                    actions.resetForm()
                   }
                 } catch (error) {
                   Swal.fire({
