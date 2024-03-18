@@ -2,6 +2,7 @@ import React from 'react'
 import derecha from '../../assets/right.svg'
 import Title from '../atoms/Title'
 import Paragraph from '../atoms/Paragraph'
+import CheckboxSelection from './CheckboxSelection'
 
 function Questions() {
   return (
@@ -24,6 +25,10 @@ function Questions() {
                   <hr className='bg-[#dfdfdf] h-auto w-[1px]' />
                   <Title level="h2" text="Software"/>
                 </div>
+              </div>
+
+              <div className='p-2'>
+                <CheckboxSelection/>
               </div>
                 
                 <div className=' absolute bottom-3 right-4'>
