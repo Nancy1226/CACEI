@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     path:'/dashboard',element:<Dashboard />
   },
   {
-    path: "/MT", element: <AeMateria/>
+    path: "/MT/:id", element: <AeMateria/>
   },
   {
     path: "/cuentionario", element: <Cuestionario/>

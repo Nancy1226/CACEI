@@ -4,11 +4,11 @@ import Paragraph from "../atoms/Paragraph";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-function Cards({ caceis }) {
+function CardSignature({ caceis }) {
   const navigate = useNavigate()
   const handleClickCard = (id) => {
     console.log("ID de cards: " + id);
-    navigate(`/mt/${id}`)
+    /* navigate(`/mt/${id}`) */
   }
 
   return (
@@ -19,18 +19,20 @@ function Cards({ caceis }) {
           animate={{ opacity: 1, y: 0, transition: { delay: index * 0.2 } }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.4 }}
-          key={cacei.id_atributo_egreso}
-          onClick={() => handleClickCard(cacei.id_atributo_egreso)}
+          key={cacei.id_grupo}
+          onClick={() => handleClickCard(cacei.id_grupo)}
           className="max-w-xs md:w-[320px] h-auto border-2 bg-[#fff] hover:border-black border-dotted ease-in-out duration-300 flex flex-col rounded-2xl overflow-hidden shadow cursor-pointer"
-          id={cacei.id_atributo_egreso}
+          id={cacei.id_grupo}
         >
-          <div className="relative w-full h-[130px] bg-[#e4e1fa] rounded-2xl"></div>
+          <div className="relative w-full h-[130px] bg-[#e4e1fa] rounded-2xl">
+          <Title level="h1" text={cacei.cuatrimestre} />
+          <Title level="h1" text={cacei.grupo} />
+          </div>
           <div className="p-4 flex flex-col items-start gap-4">
             <div className="text-center w-full">
-              <Title level="h1" text={cacei.atributo_egreso} />
+              <Title level="h1" text={cacei.materia} />
             </div>
-            <div className="text-center w-full font-semibold">
-              <Paragraph text={cacei.nombre} />
+            <div className="flex text-center w-full font-semibold">
             </div>
           </div>
         </motion.article>
@@ -39,4 +41,4 @@ function Cards({ caceis }) {
   );
 }
 
-export default Cards;
+export default CardSignature;

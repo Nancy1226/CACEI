@@ -44,9 +44,7 @@ function Navbar() {
         </div>
       </header>
       <div className={`absolute top-16 transition-all z-50 ease-in-out duration-200 ${active ? 'right-3': 'hidden'}`}>
-        <Link to="/">
           <CloseUser/>
-        </Link>
       </div>
     </div>
 

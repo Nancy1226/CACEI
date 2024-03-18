@@ -1,13 +1,27 @@
 import React from "react";
 import "../../assets/styles/closeUser.css";
+import { logout } from "../../API/Route";
+import { useNavigate } from "react-router-dom";
 
 function CloseUser() {
+  const navigate = useNavigate()
+
+  const handleLogout = async() => {
+    try{
+      const response  = await logout()
+      console.log(response)
+      navigate("/")
+    }catch(e){
+      console.log(e)
+    }
+  }
+  
   return (
     <>
         
       <div className="input relative bg-black">
         <div className=" bg-black   w-5 h-5 rounded-t-full absolute -top-2 right-3"></div>
-        <button className="value">
+        <button className="value" onClick={handleLogout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
