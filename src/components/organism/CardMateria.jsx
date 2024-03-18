@@ -21,7 +21,9 @@ function CardMateria ({id_AE}) {
     getData();
   }, [])
   
-  console.log("Estoy recibiendo el parametro de la url en CardMateria: ", id_AE)
+  // Aca meteremos al LS el id_AE
+  localStorage.setItem("id_AE", id_AE)
+
   return (
     <>
       <div className="flex justify-center py-10">

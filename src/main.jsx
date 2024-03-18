@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     path: "/MT/:id", element: <AeMateria/>
   },
   {
-    path: "/cuentionario", element: <Cuestionario/>
+    path: "/evaluacion/:id", element: <Cuestionario/>
   }
 ]);
 

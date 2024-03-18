@@ -3,12 +3,15 @@ import Questions from "../components/molecules/Questions";
 import CardsAlum from "../components/molecules/CardsAlum";
 import Navbar from "../components/organism/Navbar";
 import HeroAsks from "../components/organism/HeroAsks";
+import { useParams } from "react-router-dom";
 
 function Cuestionario() {
+  const {id} = useParams()
+
   return (
     <>
         <Navbar />
-        <HeroAsks/>
+        <HeroAsks id_grupo={id}/>
     </>
   );
 }
