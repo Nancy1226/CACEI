@@ -139,10 +139,10 @@ function HeroAsks({ id_grupo }) {
                 <Form className=" flex flex-col gap-3" onSubmit={handleSubmit}>
                 {agruparAspectosPorIndicador().map((indicador, index) => (
                   <div key={indicador.id_indicador} className="flex flex-col gap-3 px-5">
-                    <h1 className="text-base font-bold">{`${index + 1}. ${indicador.nombre_indicador}`}</h1>
-                    {indicador.aspectos.map(aspecto => (
+                    <h1 className="text-base font-bold">{"CD " }{`${index + 1}. ${indicador.nombre_indicador}`}</h1>
+                    {indicador.aspectos.map((aspecto, index2) => (
                       <div className="px-5" key={aspecto.id_aspecto}>
-                        <h2 className="text-base font-semibold">{aspecto.nombre_aspecto}</h2>
+                        <h2 className="text-base font-semibold">{"I: " }{`${index2 + 1}. ${aspecto.nombre_aspecto}`}</h2>
                        <div className="">
                         <select
                             className=" bg-transparent border border-[#989898] text-black p-2 flex rounded-lg"
