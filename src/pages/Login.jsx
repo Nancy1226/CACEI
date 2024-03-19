@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import logo from '../assets/logo.png'
@@ -8,41 +9,43 @@ import Title from "../components/atoms/Title";
 import { login } from "../API/Route";
 
 function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <>
       <Formik
-        initialValues={
-          {
-              correo:"",
-              password:""
-        
-          }
-        }
+        initialValues={{
+          correo: "",
+          password: "",
+        }}
+        validationSchema={Yup.object({
+          correo: Yup.string().email("Invalid email address").required("Required"),
+          password: Yup.string().required("Required"),
+        })}
         onSubmit={async (values, actions) => {
-             try {
-                const response = await login(values);
-              if (response.status === 200) {
-                 Swal.fire({
-                   icon: "success",
-                   title: "Bienvenido",
-                   showConfirmButton: true,
-                   timer: 1500,
-                });
-                console.log(response.data.docente)
-                localStorage.setItem("docente", response.data.docente)
-                 navigate("/dashboard")
-               }
-             } catch (error) {
-               Swal.fire({
-                icon: "error",
-                 title: "Error...",
-                 text: "Intente de nuevo",
-                footer: 'Si el problema persiste intentelo mas tarde'
-               });
-               console.log(error);
-             }
+          try {
+            const response = await login(values);
+            if (response.status === 200) {
+              Swal.fire({
+                icon: "success",
+                title: "Bienvenido",
+                showConfirmButton: true,
+                timer: 1500,
+              });
+              console.log(response.data.docente)
+              localStorage.setItem("docente", response.data.docente)
+              navigate("/dashboard")
+            }
+          } catch (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Intente de nuevo",
+              footer: 'Si el problema persiste intentelo mas tarde'
+            });
+            console.log(error);
+          }
         }}
       >
         {({
@@ -82,11 +85,16 @@ function Login() {
                           name="correo"
                           type="email"
                           onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.correo}
                           autoComplete="email"
                           required
                           className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
+                      {errors.correo && touched.correo && (
+                        <div className="text-red-500">{errors.correo}</div>
+                      )}
                     </div>
 
                     <div>
@@ -97,18 +105,31 @@ function Login() {
                         >
                           Password
                         </label>
+                        {/* Botón para mostrar/ocultar contraseña */}
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="text-sm text-[#662481] font-bold"
+                        >
+                          {showPassword ? "Ocultar contraseña" : "Ver contraseña"}
+                        </button>
                       </div>
                       <div className="mt-2">
                         <input
                           id="password"
                           name="password"
-                          type="password"
+                          type={showPassword ? "text" : "password"}
                           onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.password}
                           autoComplete="current-password"
                           required
                           className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                       </div>
+                      {errors.password && touched.password && (
+                        <div className="text-red-500">{errors.password}</div>
+                      )}
                     </div>
                     <div className="my-3">
                         <button
