@@ -24,6 +24,7 @@ function Login() {
           password: Yup.string().required("Required"),
         })}
         onSubmit={async (values, actions) => {
+          console.log(values)
           try {
             const response = await login(values);
             if (response.status === 200) {

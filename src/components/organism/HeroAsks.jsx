@@ -155,7 +155,7 @@ function HeroAsks({ id_grupo }) {
                               setFieldValue(`id_aspecto_${aspecto.id_aspecto}_id_Indicador_${indicador.id_indicador}`, value);
                             }}
                           >
-                            <option value="">Seleccione una opción</option>
+                            <option value="" disabled selected>Seleccione una opción</option>
                             <option value="1">Poco</option>
                             <option value="2">Debajo del promedio</option>
                             <option value="3">Promedio</option>
