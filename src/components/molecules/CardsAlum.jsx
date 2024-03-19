@@ -5,13 +5,13 @@ import Title from '../atoms/Title';
 function CardsAlum({alumno}) {
     return ( 
     <>
-        <article className="w-full border-[1.5px] h-[336px] bg-white flex flex-col gap-5 items-center justify-center py-7 rounded-lg">
+        <article className="w-full border-[1.5px] h-[406px] bg-white flex flex-col gap-5 items-center justify-center py-7 rounded-lg">
             <div className=" w-36 h-36 rounded-full overflow-hidden">
                 <img className="w-full h-full object-cover" src={Up} alt="" />
             </div>
-
+            <Title level="h1" text="Alumno a evaluar:" />
             <Title level="h2" text={alumno.nombre} />
-            <Paragraph text={alumno.matricula} />
+            <p className='text-base font-bold'>{alumno.matricula}</p>
             <Title level="h3" text="Software" />
         </article>
     </> 

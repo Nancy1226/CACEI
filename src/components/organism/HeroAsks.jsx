@@ -85,21 +85,23 @@ function HeroAsks({ id_grupo }) {
   return (
     <>
       <div className="flex justify-center">
-        <section className="grid grid-cols-1 md:grid-cols-5 md:space-x-10 pl-2 pr-2 md:pr-0 md:pl-0  py-7  max-w-6xl w-full ">
-          <div className=" md:col-span-1 hidden md:flex">
+        <section className="grid grid-cols-1 lg:grid-cols-5 md:space-x-10 pl-2 pr-2 md:pr-0 md:pl-0  py-7  max-w-6xl w-full ">
+          <div className=" hidden lg:flex">
             {currentAlumno ? (
               <CardsAlum alumno={currentAlumno}/>
             ): (<CardsAlum alumno={cargando}/>)}
             
           </div>
-          <div className="border border-red-500 col-span-4">
-          <div className="flex justify-end">
-              <button onClick={handleNextAlumno}>Siguiente</button>
+          <div className="border border-gray-300 p-3 rounded-lg col-span-4">
+          <div className="flex justify-end ">
+              <button className="block py-2 bg-[#714ddf] px-4 text-white font-bold rounded-3xl" onClick={handleNextAlumno}>Siguiente</button>
           </div>
 
           {currentAlumno ? (
             <>
-              <Title level={"h1"} text={`Evaluando a: ${currentAlumno.nombre}`}/>
+              <div className=" flex h-10 px-1 lg:hidden">
+                <Title level={"h1"} text={`Evaluando a: ${currentAlumno.nombre}`}/>
+              </div>
               <Formik
               initialValues={getInitialValues(currentAlumno)}
               enableReinitialize={true}
@@ -140,14 +142,17 @@ function HeroAsks({ id_grupo }) {
                 isSubmitting,
                 setFieldValue,
               }) => (
-                <Form onSubmit={handleSubmit}>
-                  {agruparAspectosPorIndicador().map(indicador => (
-                    <div key={indicador.id_indicador} className="gap-5">
-                      <h1 className="text-xl font-bold">{indicador.nombre_indicador}</h1>
-                      {indicador.aspectos.map(aspecto => (
-                        <div key={aspecto.id_aspecto}>
-                          <h2 className="text-base">{aspecto.nombre_aspecto}</h2>
-                          <select
+                <Form className=" flex flex-col gap-3" onSubmit={handleSubmit}>
+                {agruparAspectosPorIndicador().map((indicador, index) => (
+                  <div key={indicador.id_indicador} className="flex flex-col gap-3 px-5">
+                    <h1 className="text-base font-bold">{`${index + 1}. ${indicador.nombre_indicador}`}</h1>
+                    {indicador.aspectos.map(aspecto => (
+                      <div className="px-5" key={aspecto.id_aspecto}>
+                        <h2 className="text-base font-semibold">{aspecto.nombre_aspecto}</h2>
+                       <div className="">
+                        <select
+                            className=" bg-transparent border border-[#989898] text-black p-2 flex rounded-lg"
+                            
                             id={`respuesta_${aspecto.id_aspecto}`}
                             name={`respuesta_${aspecto.id_aspecto}`}
                             value={values[`respuesta_${aspecto.id_aspecto}`]}
@@ -163,12 +168,15 @@ function HeroAsks({ id_grupo }) {
                             <option value="4">Superior al promedio</option>
                             <option value="5">Excelente</option>
                           </select>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                  <button type="submit">Enviar</button>
-                </Form>
+                       </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+                <div className=" flex justify-end">
+                  <button className="p-2 px-5 bg-[#216dd7] block text-white font-bold rounded-full" type="submit">Enviar</button>
+                </div>
+              </Form>
               )}
             </Formik>
             </>
