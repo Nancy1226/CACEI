@@ -10,6 +10,7 @@ function CloseUser() {
     try{
       const response  = await logout()
       console.log(response)
+      localStorage.removeItem("docente")
       navigate("/")
     }catch(e){
       console.log(e)

@@ -30,7 +30,8 @@ function Login() {
                    showConfirmButton: true,
                    timer: 1500,
                 });
-                 console.table(values);
+                console.log(response.data.docente)
+                localStorage.setItem("docente", response.data.docente)
                  navigate("/dashboard")
                }
              } catch (error) {

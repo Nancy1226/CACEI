@@ -88,8 +88,8 @@ function HeroAsks({ id_grupo }) {
         <section className="grid grid-cols-1 lg:grid-cols-5 md:space-x-10 pl-2 pr-2 md:pr-0 md:pl-0  py-7  max-w-6xl w-full ">
           <div className=" hidden lg:flex">
             {currentAlumno ? (
-              <CardsAlum alumno={currentAlumno}/>
-            ): (<CardsAlum alumno={cargando}/>)}
+              <CardsAlum alumno={currentAlumno} total={Alumnos.length} actual={currentAlumnoIndex}/>
+            ): (<CardsAlum alumno={cargando} total={0} actual={0}/>)}
             
           </div>
           <div className="border border-gray-300 p-3 rounded-lg col-span-4">
@@ -114,11 +114,10 @@ function HeroAsks({ id_grupo }) {
                   if (response.status === 200) {
                     Swal.fire({
                       icon: "success",
-                      title: "Bienvenido",
+                      title: "Guardo exitosamente",
                       showConfirmButton: true,
                       timer: 1500,
                     });
-                    console.table(values);
                     actions.resetForm()
                   }
                 } catch (error) {
