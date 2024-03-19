@@ -10,8 +10,7 @@ function CardMateria ({id_AE}) {
     const getData = async() => {
       try{
         const response = await getAE_Materias(id_AE)
-        console.log("Imprimiendo el response de las materias");
-        console.table(response.data)
+        
         setData(response.data)
       }catch(e){
         console.log(e)

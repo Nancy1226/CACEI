@@ -22,11 +22,7 @@ function HeroAsks({ id_grupo }) {
       try {
         const response = await getAlumnos_Materia(id_grupo)
         const responseIndicadores = await getIndicadores_Aspectos(id_AE)
-        console.log("Imprimiendo los alumnos");
-        console.table(response.data)
         setAlumnos(response.data)
-        console.log("Impriminedo las preguntas")
-        console.log(responseIndicadores.data)
         setIndicadores(responseIndicadores.data)
       } catch (e) {
         console.log(e)
@@ -38,7 +34,6 @@ function HeroAsks({ id_grupo }) {
 
 
   const handleNextAlumno = () => {
-    console.log("Estamos llamando a handleNextAlumno");
     if (currentAlumnoIndex < Alumnos.length - 1) {
       setCurrentAlumnoIndex(currentAlumnoIndex + 1);
     }

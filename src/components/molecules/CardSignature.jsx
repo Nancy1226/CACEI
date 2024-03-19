@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function CardSignature({ caceis }) {
   const navigate = useNavigate()
   const handleClickCard = (id) => {
-    console.log("Id_grupo: " + id);
     navigate(`/evaluacion/${id}`)
   }
 

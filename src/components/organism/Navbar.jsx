@@ -3,10 +3,17 @@ import logo from '../../assets/logouni.png'
 import { useState, useEffect, useRef } from 'react';
 import CloseUser from './CloseUser';
 import { Link } from 'react-router-dom';
-
+import home from "../../assets/home.svg"
+import { useNavigate } from 'react-router-dom';
 function Navbar() {
   const [active, setActive] = useState(false);
   const containerRef = useRef(null); 
+  
+  const navigate = useNavigate()
+
+  const handleClick = ( ) => {
+    navigate("/dashboard")
+  }
 
   const toggleClose = () => {
     setActive(!active);
@@ -31,6 +38,10 @@ function Navbar() {
     <div ref={containerRef}>
       <header className="  h-[65px] z-50 border-b border-[#cccc] duration-300 ease-in-out  p-4  bg-[#ffff] flex items-center justify-end   ">
         {/* Logo img */}
+        <button className='flex flex-col' onClick={handleClick}>
+          <img src={home} className='h-10'/>
+          Home
+        </button>
         <img
           src={logo}
           className="h-[65px] object-cover absolute top-0 left-0"
