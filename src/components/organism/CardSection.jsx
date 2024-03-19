@@ -26,7 +26,9 @@ function CardSection() {
     <>
     <section className='flex justify-center py-10'>
       <div className='flex flex-col gap-5'>
-        <h1>Bienvenido {localStorage.getItem("docente")}</h1>
+        <div className='w-full flex justify-center'>
+          <h1 className='text-base font-bold'>Bienvenido {localStorage.getItem("docente")}</h1>
+        </div>
         
         <div className='grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  md:max-w-7xl gap-6 '>
           <Cards caceis={Data} />

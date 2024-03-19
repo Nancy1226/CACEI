@@ -42,7 +42,12 @@ function Navbar() {
             <img src={usuario} className="h-[40px] rounded-full" />
           </button>
         </div>
+
+        <div className='px-3'>
+        {localStorage.getItem("docente")}
+        </div>
       </header>
+
       <div className={`absolute top-16 transition-all z-50 ease-in-out duration-200 ${active ? 'right-3': 'hidden'}`}>
           <CloseUser/>
       </div>
