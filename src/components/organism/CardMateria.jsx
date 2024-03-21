@@ -10,7 +10,6 @@ function CardMateria ({id_AE}) {
     const getData = async() => {
       try{
         const response = await getAE_Materias(id_AE)
-        
         setData(response.data)
       }catch(e){
         console.log(e)

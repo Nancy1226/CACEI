@@ -17,8 +17,9 @@ function Navbar() {
   };
 
   const handleDownload = () => {
-    // logica para poder descargar los criterios
-    console.log('se hizo click en ebtn de descargar rubrica')
+    
+    const downloadUrl = 'https://drive.google.com/file/d/1edHe-J5ReSxBECJLcXCOuqi32jwg1riZ/view?usp=drive_link'; // URL modificada para permitir la descarga directa
+    window.open(downloadUrl, '_blank');
   }
 
   const toggleClose = () => {
@@ -46,13 +47,12 @@ function Navbar() {
     <>
       <div ref={containerRef}>
         <header className="  h-[65px] z-50 border-b border-[#cccc] duration-300 ease-in-out  p-4  bg-[#ffff] flex items-center justify-end   ">
-          {/* Logo img */}
+          
           <img
             src={logo}
             className="h-[65px] object-cover absolute top-0 left-0"
             alt="logo-image"
           />
-
           <div className="flex flex-row gap-6 items-center">
             <button onClick={handleDownload} className="bg-[#6541d0] hover:bg-[#6541d0c9] p-3 text-white font-bold px-4 rounded-full flex items-center gap-2">
               <img src={pdf} alt="pdf" />

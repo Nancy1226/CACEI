@@ -23,13 +23,15 @@ function Cards({ caceis }) {
           className="max-w-xs md:w-[320px] h-auto border-2 bg-[#fff] hover:border-black border-dotted ease-in-out duration-300 flex flex-col rounded-2xl overflow-hidden shadow cursor-pointer"
           id={cacei.id_atributo_egreso}
         >
-          <div className="relative w-full h-[130px] bg-[#e4e1fa] rounded-2xl"></div>
+          <div className="relative w-full h-[130px] flex flex-row items-center justify-center bg-[#e4e1fa] rounded-2xl">
+          <Title level="h4" text={cacei.atributo_egreso} />
+          </div>
           <div className="p-4 flex flex-col items-start gap-4">
             <div className="text-center w-full">
-              <Title level="h1" text={cacei.atributo_egreso} />
+            <Title level="h1" text={cacei.nombre} />
             </div>
             <div className="text-center w-full font-semibold">
-              <Paragraph text={cacei.nombre} />
+              
             </div>
           </div>
         </motion.article>
