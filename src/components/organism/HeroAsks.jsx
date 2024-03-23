@@ -88,9 +88,16 @@ function HeroAsks({ id_grupo }) {
 
           </div>
           <div className="border border-gray-300 p-3 rounded-lg col-span-4">
-            <div className="flex justify-end ">
-              <button className="block py-2 bg-[#714ddf] px-4 text-white font-bold rounded-3xl" onClick={handleNextAlumno}>Siguiente</button>
+            <div className="flex items-center justify-end pr-4 ">
+              {
+                currentAlumno ? (
+                  <>
+                    <p className="text-xl font-semibold">{currentAlumnoIndex+1}/{Alumnos.length}</p>
+                  </>
+                ): (<p>"cargando"</p>)
+              }
             </div>
+           
 
             {currentAlumno ? (
               <>
@@ -231,9 +238,12 @@ function HeroAsks({ id_grupo }) {
                           ))}
                         </div>
                       ))}
-                      <div className=" flex justify-end">
+                      <div className=" flex justify-end gap-3">
+                                           
+              <button type="button" className="block py-2 bg-[#714ddf] px-4 text-white font-bold rounded-3xl" onClick={handleNextAlumno}>Siguiente</button>
                         <button className="p-2 px-5 bg-[#216dd7] block text-white font-bold rounded-full" type="submit">Enviar</button>
                       </div>
+   
                     </Form>
                   )}
                 </Formik>

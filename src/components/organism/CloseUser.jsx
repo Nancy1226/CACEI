@@ -1,50 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/styles/closeUser.css";
 import { logout } from "../../API/Route";
 import { useNavigate } from "react-router-dom";
+import usuario from "../../assets/usuario.png";
+import door from '../../assets/door.svg'
 
-function CloseUser() {
-  const navigate = useNavigate()
+function CloseUser({ onClick, active }) {
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(
+    window.matchMedia("(max-width: 768px)").matches
+  );
 
-  const handleLogout = async() => {
-    try{
-      const response  = await logout()
-      console.log(response)
-      localStorage.removeItem("docente")
-      navigate("/")
-    }catch(e){
-      console.log(e)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      const response = await logout();
+      console.log(response);
+      localStorage.removeItem("docente");
+      navigate("/");
+    } catch (e) {
+      console.log(e);
     }
-  }
-  
+  };
+
   return (
     <>
-        
-      <div className="input relative bg-black">
-        <div className=" bg-black   w-5 h-5 rounded-t-full absolute -top-2 right-3"></div>
-        <button className="value" onClick={handleLogout}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
+      {isMobile ? (
+        <>
+          <button className="p-3 px-3 text-black rounded-full flex gap-2 items-center"> <img src={door} alt="" />cerrar sesion</button>
+        </>
+      ) : (
+        <>
+          <a
+            onClick={onClick}
+            className="flex items-center space-x-2 rtl:space-x-reverse cursor-pointer"
           >
-            <path
-              fill-rule="evenodd"
-              fill="#7D8590"
-              d="M19.78 4.22a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l4.5 4.5a.75.75 0 001.06 0l4.5-4.5a.75.75 0 011.06 0zM5 10.5h11.25a.75.75 0 010 1.5H5a.75.75 0 010-1.5z"
-              clip-rule="evenodd"
-            ></path>
-            <path
-              fill-rule="evenodd"
-              fill="#7D8590"
-              d="M5.75 13.5A.75.75 0 005 14.25h13.25a.75.75 0 100-1.5H5a.75.75 0 00.75.75zM11.75 17.5a.75.75 0 01-.75.75H5a.75.75 0 010-1.5h6a.75.75 0 01.75.75z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-          
-          Cerrar Sesion
-        </button>
-      </div>
+            <img src={usuario} className="h-12" alt="Logo" />
+            <span className="self-center text-base font-semibold whitespace-nowrap text-black">
+              {localStorage.getItem("docente")}
+            </span>
+          </a>
+
+          <div
+            className={` absolute transition-all z-50 ease-in-out duration-200 top-0 md:top-16 ${
+              active ? "right-0" : "hidden"
+            }`}
+          >
+            <div className="input relative w-full md:mobile">
+              <button className="value" onClick={handleLogout}>
+                Cerrar Sesión
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
