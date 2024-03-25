@@ -1,19 +1,26 @@
 import React from 'react'
 import Cards from '../molecules/Cards'
-import { cacei } from '../../mocks/data.json'
-import ejemplo from '../../mocks/ejemplo.json'
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getAtributosEgreso } from '../../API/Route'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 function CardSection() {
   const [Data, setData] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getData = async() => {
       try{
-        const response = await getAtributosEgreso()
+        const response = await getAtributosEgreso()    
         setData(response.data)
       }catch(e){
+        Swal.fire({
+          icon: "warning",
+          title: "Porfavor inicie sesión nuevamente para continuar.",
+          showConfirmButton: true
+        }).then(() => {
+          navigate("/");
+        });
         console.log(e)
       }
     }
@@ -31,7 +38,7 @@ function CardSection() {
         </div>
         
         <div className='grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  md:max-w-7xl gap-6 '>
-          <Cards caceis={Data} />
+          <Cards Data={Data} type={"AtributosEgreso"} />
         </div>
       </div>
     </section>

@@ -1,6 +1,5 @@
 import React from "react";
-import CardSignature from "../molecules/CardSignature";
-import { materias } from '../../mocks/data.json'
+import Cards from "../molecules/Cards";
 import { useEffect, useState } from "react";
 import { getAE_Materias } from "../../API/Route";
 
@@ -26,7 +25,7 @@ function CardMateria ({id_AE}) {
     <>
       <div className="flex justify-center py-10">
         <section className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  md:max-w-7xl gap-6 ">
-          <CardSignature caceis={Data}/>
+          <Cards Data={Data} type={"Signature"} />
         </section>
       </div>
     </>

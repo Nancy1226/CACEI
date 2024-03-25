@@ -2,7 +2,7 @@ import Up from '../../assets/Up.png'
 import Paragraph from '../atoms/Paragraph';
 import Title from '../atoms/Title';
 
-function CardsAlum({alumno, total, actual}) {
+function CardsAlum({alumno}) {
     return ( 
     <>
         <article className="w-full border-[1.5px] h-[506px] bg-white flex flex-col gap-5 items-center justify-center py-7 rounded-lg">
@@ -13,7 +13,7 @@ function CardsAlum({alumno, total, actual}) {
             <Title level="h2" text={alumno.nombre} />
             <p className='text-base font-bold'>{alumno.matricula}</p>
             <Title level="h3" text="Software" />
-            <h2> {actual+1}/{total}</h2>
+          
         </article>
     </> 
     );

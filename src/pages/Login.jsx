@@ -3,9 +3,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import { Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import logo from '../assets/logo.png'
-import Title from "../components/atoms/Title";
 import { login } from "../API/Route";
 
 function Login() {
@@ -24,19 +22,19 @@ function Login() {
           password: Yup.string().required("Required"),
         })}
         onSubmit={async (values, actions) => {
-          console.log(values)
           try {
             const response = await login(values);
             if (response.status === 200) {
               Swal.fire({
                 icon: "success",
                 title: "Bienvenido",
-                showConfirmButton: true,
+                showConfirmButton: false,
                 timer: 1500,
               });
-              localStorage.setItem("docente", response.data.docente)
-              navigate("/dashboard")
             }
+            localStorage.setItem("docente", response.data.docente)
+            sessionStorage.setItem("authenticated", "true");
+            navigate("/dashboard")
           } catch (error) {
             Swal.fire({
               icon: "error",

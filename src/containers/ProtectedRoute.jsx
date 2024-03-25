@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
-const ProtectedRoute = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const ProtectedRoute = ({session}) => { 
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        return sessionStorage.getItem("authenticated") === "true";
+    });
 
-  useEffect(() => {
-    const accessToken = Cookies.get('access-token');
-    setIsAuthenticated(!!accessToken);
-  }, []);
+    useEffect(() => {
+        // Verificar si el usuario está autenticado
+        const session = sessionStorage.getItem("authenticated") === "true";
+        setIsAuthenticated(session);
+    }, []);
 
-  if (!Cookies.get('access-token')) {
-    return <Navigate to="/" />;
-  }
+    // Redirigir al usuario si no está autenticado
+    if (!isAuthenticated) {
+        return <Navigate to="/" />;
+    }
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
+    return <Outlet />;
 };
 
 export default ProtectedRoute;

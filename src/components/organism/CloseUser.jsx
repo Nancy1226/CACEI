@@ -26,8 +26,8 @@ function CloseUser({ onClick, active }) {
   const handleLogout = async () => {
     try {
       const response = await logout();
-      console.log(response);
       localStorage.removeItem("docente");
+      sessionStorage.removeItem("authenticated")
       navigate("/");
     } catch (e) {
       console.log(e);
